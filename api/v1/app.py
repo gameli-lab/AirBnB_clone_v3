@@ -3,7 +3,7 @@
 A flask module
 """
 from api.v1.views import app_views
-from flask import Flask
+from flask import Flask, jsonify, make_response
 from models import storage
 import os
 
@@ -20,6 +20,17 @@ def close_conn(exception):
     closes connection to storage
     """
     storage.close()
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    """
+    Handles 404 error.
+    """
+    content = jsonify({
+        "error": "Not found"
+        })
+    return make_response(content, 404)
 
 
 if __name__ == "__main__":
