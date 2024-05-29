@@ -19,7 +19,7 @@ def stat():
         })
 
 
-@app_views.route("/stats", strict_slashes=False)
+@app_views.route("/stats", methods=['GET'], strict_slashes=False)
 def objects():
     """
     counts the number of objects
