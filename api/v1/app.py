@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""A module for flask application."""
+"""A module for a flask application."""
 from api.v1.views import app_views
 from flask import Flask, jsonify, make_response
 from models import storage
@@ -17,18 +17,14 @@ def close_conn(exception):
     """closes connection to storage
 
     Args:
-        exception: exception
+        exception(Exception): exception that occurs.
     """
     storage.close()
 
 
 @app.errorhandler(404)
-def page_not_found(error):
-    """Handles 404 error.
-
-    Args:
-        error: error
-    """
+def page_not_found():
+    """Handles 404 error."""
     content = jsonify({
         "error": "Not found"
         })
