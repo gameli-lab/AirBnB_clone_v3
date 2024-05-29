@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-
 """
-An index module
+Contains routes for app_views blueprint.
 """
 
 from api.v1.views import app_views
@@ -43,6 +42,9 @@ def objects():
 
 @app_views.route("/nop", strict_slashes=False)
 def nop():
+    """
+    Handles 404 error
+    """
     return jsonify({
         "error": "Not found"
         })
