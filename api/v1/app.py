@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""A module for a flask application."""
+"""
+This module sets up a Flask application for the AirBnB API.
+It registers the app_views blueprint, handles 404 errors, and closes the
+storage connection when the application context is torn down.
+"""
 from api.v1.views import app_views
 from flask import Flask, jsonify, make_response
 from models import storage
