@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-View for user object
+View for Amenity objects
 """
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
