@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-View for Amenity objects
+View for all User objects
 """
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
@@ -26,7 +26,7 @@ def all_users():
         )
 def user_by_id(user_id):
     """
-    Retrieves a User object
+    Retrieves a User object by id.
     """
     user_obj = storage.get(User, user_id)
     if not user_obj:
@@ -39,7 +39,7 @@ def user_by_id(user_id):
         )
 def remove_user(user_id):
     """
-    Deletes a User object.
+    Deletes a User object by id.
     """
     user_obj = storage.get(User, user_id)
     if not user_obj:
@@ -54,7 +54,7 @@ def remove_user(user_id):
         )
 def create_user():
     """
-    Creates a user.
+    Creates a new user object.
     """
     json_data = request.get_json(silent=True)
     if not json_data:
@@ -75,7 +75,7 @@ def create_user():
         )
 def update_user(user_id):
     """
-    Updates User object.
+    Updates User object of a particular id.
     """
     user_obj = storage.get(User, user_id)
     if not user_obj:
