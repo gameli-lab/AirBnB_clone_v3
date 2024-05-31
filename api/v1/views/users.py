@@ -13,6 +13,7 @@ from models.user import User
 def all_users():
     """
     Retrieves the list of all User objects
+    :return: json of all users
     """
     users = []
     for user in storage.all(User).values():
@@ -26,6 +27,8 @@ def all_users():
 def user_by_id(user_id):
     """
     Retrieves a User object by id.
+    :param user_id: user object id
+    :return: user object with specified if or error
     """
     user_obj = storage.get(User, user_id)
     if not user_obj:
@@ -39,6 +42,8 @@ def user_by_id(user_id):
 def remove_user(user_id):
     """
     Deletes a User object by id.
+    :param user_id: user object id
+    :return: empty dict with 200 or 404 if not found
     """
     user_obj = storage.get(User, user_id)
     if not user_obj:
@@ -54,6 +59,7 @@ def remove_user(user_id):
 def create_user():
     """
     Creates a new user object.
+    :return: newly created user object
     """
     json_data = request.get_json(silent=True)
     if not json_data:
@@ -75,6 +81,8 @@ def create_user():
 def update_user(user_id):
     """
     Updates User object of a particular id.
+    :param user_id: user object id
+    :return: user object and 200 on success, or 400 or 404 on failure
     """
     user_obj = storage.get(User, user_id)
     if not user_obj:
