@@ -74,7 +74,7 @@ def create_city(state_id):
     state_obj = storage.get(State, state_id)
     if state_obj is None:
         abort(404)
-    city_json_obj = request.get_json()
+    city_json_obj = request.get_json(silent=True)
     if not city_json_obj:
         abort(400, description="Not a JSON")
     if 'name' not in city_json_obj:
@@ -96,7 +96,7 @@ def update_city(city_id):
     Args:
         city_id(City): id of city object
     """
-    city_json_obj = request.get_json()
+    city_json_obj = request.get_json(silent=True)
     if city_json_obj is None:
         abort(400, description="Not a JSON")
     city_obj = storage.get(City, city_id)
