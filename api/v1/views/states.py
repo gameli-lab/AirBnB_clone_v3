@@ -50,7 +50,7 @@ def create_state():
     """
     Creates a new state.
     """
-    state_json_obj = request.get_json()
+    state_json_obj = request.get_json(silent=True)
     if not state_json_obj:
         abort(400, description="Not a JSON")
     if "name" not in state_json_obj:
@@ -70,7 +70,7 @@ def update_state(state_id):
     state_obj = storage.get(State, state_id)
     if not state_obj:
         abort(404)
-    state_json_obj = request.get_json()
+    state_json_obj = request.get_json(silent=True)
     if not state_json_obj:
         abort(400, description="Not a JSON")
     for key, value in state_json_obj.items():
